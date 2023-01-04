@@ -25,7 +25,7 @@ const formatPrice = (price) => {
   return formattedPrice;
 };
 
-const getStorageItem = () => {
+const getStorageItem = (item) => {
   let storageItem = localStorage.getItem(item);
   if (storageItem) {
     storageItem = JSON.parse(localStorage.getItem(item));
