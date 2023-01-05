@@ -1,6 +1,14 @@
-import { getElement } from '../utils.js';
-import display from '../displayProducts.js';
+import { getElement } from "../utils.js";
+import display from "../displayProducts.js";
 
-const setupCompanies = () => {};
+const setupCompanies = (store) => {
+  let companies = ["all", ...new Set(store.map((product) => product.company))];
+  const companiesDOM = getElement(".companies");
+  companiesDOM.innerHTML = companies
+    .map((company) => {
+      return `<button class="company-btn">${company}</button>`;
+    })
+    .join("");
+};
 
 export default setupCompanies;
