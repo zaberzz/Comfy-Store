@@ -43,8 +43,17 @@ function displayCartTotal() {
   }, 0);
   cartTotalDOM.textContent = `Total: ${formatPrice(total)}`;
 }
+function displayCartItemsDom() {
+  cart.forEach((cartItem) => {
+    addToCartDOM(cartItem);
+  });
+}
+function setUpCartFunctionality() {}
 
 const init = () => {
-  console.log(cart);
+  displayCartItemCount();
+  displayCartTotal();
+  setUpCartFunctionality();
+  displayCartItemsDom();
 };
 init();
