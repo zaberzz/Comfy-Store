@@ -23,6 +23,10 @@ export const addToCart = (id) => {
     cart = [...cart, product];
     addToCartDOM(product);
   } else {
+    const amount = increaseAmount(id);
+    const items = [...cartItemsDOM.querySelectorAll(".cart-item-amount")];
+    const newAmount = items.find((value) => value.dataset.id === id);
+    newAmount.textContent = amount;
   }
   displayCartItemCount();
   displayCartTotal();
@@ -47,6 +51,17 @@ function displayCartItemsDom() {
   cart.forEach((cartItem) => {
     addToCartDOM(cartItem);
   });
+}
+function increaseAmount(id) {
+  let newAmount;
+  cart = cart.map((cartItem) => {
+    if (cartItem.id === id) {
+      newAmount = cartItem.amount + 1;
+      cartItem = { ...cartItem, amount: newAmount };
+    }
+    return cartItem;
+  });
+  return newAmount;
 }
 function setUpCartFunctionality() {}
 
