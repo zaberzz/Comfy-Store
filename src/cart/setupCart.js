@@ -63,6 +63,17 @@ function increaseAmount(id) {
   });
   return newAmount;
 }
+function decreaseAmount(id) {
+  let newAmount;
+  cart = cart.map((cartItem) => {
+    if (cartItem.id === id) {
+      newAmount = cartItem.amount - 1;
+      cartItem = { ...cartItem, amount: newAmount };
+    }
+    return cartItem;
+  });
+  return newAmount;
+}
 function removeItem(id) {
   cart = cart.filter((cartItem) => cartItem.id !== id);
 }
