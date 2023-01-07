@@ -24,8 +24,25 @@ export const addToCart = (id) => {
     addToCartDOM(product);
   } else {
   }
+  displayCartItemCount();
+  displayCartTotal();
+  setStorageItem("cart", cart);
   openCart();
 };
+
+function displayCartItemCount() {
+  const amount = cart.reduce((total, cartItem) => {
+    return (total += cartItem.amount);
+  }, 0);
+  cartItemCountDOM.textContent = amount;
+}
+
+function displayCartTotal() {
+  let total = cart.reduce((total, cartItem) => {
+    return (total += cartItem.price * cartItem.amount);
+  }, 0);
+  cartTotalDOM.textContent = `Total: ${formatPrice(total)}`;
+}
 
 const init = () => {
   console.log(cart);
